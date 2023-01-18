@@ -1,0 +1,14 @@
+camunda.bpm.client:
+  base-url: http://localhost:8080/engine-rest # the URL pointing to the Camunda Platform Runtime REST API
+  lock-duration: 10000 # defines how many milliseconds the External Tasks are locked until they can be fetched again
+  subscriptions:
+    checkWeather: # topic name of the External Service Task
+      variable-names: [isGoodWeather] # our business logic doesn't require any variables, so don't fetch them
+      process-definition-key: lets_go_fly # only filter for External Tasks with this process definition key
+    preFlightInspection: # topic name of the External Service Task
+      variable-names: [isGoodWeather, isPassedPFI] # our business logic doesn't require any variables, so don't fetch them
+      process-definition-key: lets_go_fly # only filter for External Tasks with this process definition key
+
+logging.level.org.camunda.bpm.client: DEBUG # increase the log level of the application
+
+server.port: 8181
